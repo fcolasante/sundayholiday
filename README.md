@@ -5,6 +5,7 @@ Computer Networks Project AA 2018/19 of Sapienza, University of Rome, course hel
 ## Abstract
 This project consists of a web application to organize trips and events with other people, collecting information about places such as weather, date, user rating, useful links, etc.
 
+![infrastructure](./assets/img/infrastructure.png)
 ## External services
 The external services used in this project are:
 
@@ -34,7 +35,6 @@ It is offered this set of APIs:
 - Delete an event
 
 API documentation is available at: [SundayHode v1.0.0 API](https://app.swaggerhub.com/apis/fcolasante/sundayHoliday/1.0.0)
-La struttura delle API nel dettaglio è visualizzabile qui: https://app.swaggerhub.com/apis/fcolasante/sundayHoliday/1.0.0
 
 # Usage
 To start the application, run the following command:
