@@ -1,0 +1,52 @@
+{
+  "name": "sundayholiday",
+  "version": "1.0.0",
+  "description": "Progetto di Reti di Calcolatori AA 2018/19",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/eslint code/routes.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/reti18/sundayholiday.git"
+  },
+  "author": "Francesco Colasante, Gianmarco D'Alessandro, Luca Gioffrè, Alessandro Accardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/reti18/sundayholiday/issues"
+  },
+  "homepage": "https://gitlab.com/reti18/sundayholiday#readme",
+  "dependencies": {
+    "amqplib": "^0.5.3",
+    "async": "^2.6.1",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "1.15.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "4.16.4",
+    "express-session": "^1.15.6",
+    "google-calendar": "^1.3.2",
+    "googleapis": "^27.0.0",
+    "node-couchdb": "^1.3.0",
+    "nodemailer": "^4.7.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-google-oauth2": "^0.1.6",
+    "passport-local": "^1.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "socket.io": "1.4.5",
+    "websocket": "^1.0.28",
+    "ws": "^6.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main class="container">
+            <div class="jumbotron">
+                <h1>Welcome to Sunday Holiday<i class="fas fa-umbrella-beach"></i></h1>
+                <p>Organizza la tua vacanza domenicale</p>
+            </div>
+            <h1>Profile</h1>
+            <% if(user.google == undefined){%>
+            <h3>Local Info</h3>
+            <p> Name:<%=user.local.name%></p>
+            <p> Cognome:<%=user.local.surname%></p>
+            <p> username:<%=user.local.username%></p>
+            <p> Email:<%=user.local.email%></p>
+            <%}else{%>
+            <h3>Google Info</h3>
+            <p> username:
+                <%=user.google.name%>
+            </p>
+            <%}%>
+    
+        </main>
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main class="container">
+        <div class="jumbotron">
+            <h1>Welcome to Sunday Holiday<i class="fas fa-umbrella-beach"></i></h1>
+            <p>Organizza la tua vacanza domenicale</p>
+        </div>
+        <div class="col align-self-center">
+            <div class="row align-items-center">
+                <div class="form-group align-self-center">
+                    <form action="/places" method="POST">
+                        <input name="selectedPlace" type="text" class="form-control form-control-lg" id="place"
+                            aria-describedby="placeHelp" placeholder="Inserisci il luogo">
+                        <small id="placeHelp" class="form-text text-muted">Cerca quello che vuoi (città, palazzi,
+                            Riserve naturali, Musei).</small>
+                        <button type="submit" class="btn btn-block btn-primary ">Cerca da Google</button>
+                        <% if((typeof results !== 'undefined') && results == 'fail'){%>
+                        <% console.log(results) %>
+                        <small class="form-text text-muted"> &nbsp;</small>
+                        <% } %>
+                    </form>
+                </div>
+                <div class="text-center align-self-center">
+                    <div class="form-group align-self-center" style='margin:15px; padding:10px;'>
+                        <p>Oppure</p>
+                    </div>
+                </div>
+                <div class="form-group align-self-center">
+                    <form action="/get_saved_event" method="GET">
+                        <input type="text" name="name" placeholder="Cerca tramite luogo..." required class="form-control form-control-lg">
+                        <small class="form-text text-muted">Assicurati di scrivere correttamente, CouchDB è un po'
+                            nazista...</small>
+                        <input type="submit" class="btn btn-block btn-success" value="Cerca tra i nostri eventi">
+                        <% if((typeof results !== 'undefined') && results == 'fail'){%>
+                        <% console.log(results) %>
+                        <small class="form-text text-muted">
+                            <font style='color:red'>Errore: Nessun evento presente in quella località</font>
+                        </small>
+                        <% } %>
+                    </form>
+                </div>
+
+            </div>
+            <div class="row align-items-center">
+                <div class="form-group align-self-center">
+                    <form action="/event" method="GET">
+                        <select class="form-control" name="event">
+                            <% if(typeof events !== 'undefined'){%>
+                            <% events.forEach(function(ev) { %>
+                            <option value="<%=ev._id%>">
+                                <%=ev.title%>
+                            </option>
+                            <% }); %>
+                            <% } %>
+                        </select>
+                        <small class="form-text text-muted">Prova un po', è divertente..</small>
+                        <input type="submit" class="btn btn-block btn-warning" value="Cerca tra i nostri eventi">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+</body>
+
+</html>

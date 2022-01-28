@@ -1,0 +1,24 @@
+{
+  "name": "sundayholiday-chat",
+  "version": "1.0.0",
+  "description": "Progetto di Reti di Calcolatori AA 2018/19",
+  "main": "chat-server.js",
+  "scripts": {
+    "start": "node chat-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/reti18/sundayholiday.git"
+  },
+  "author": "Francesco Colasante, Gianmarco D'Alessandro, Luca Gioffrè, Alessandro Accardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/reti18/sundayholiday/issues"
+  },
+  "homepage": "https://gitlab.com/reti18/sundayholiday#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "websocket": "^1.0.28"
+  },
+  "devDependencies": {}
+}

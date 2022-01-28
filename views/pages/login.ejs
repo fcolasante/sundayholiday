@@ -1,0 +1,53 @@
+<!-- views/pages/login.ejs -->
+
+<!doctype html>
+<html>
+
+<head>
+    <% include ../partials/head %>
+    <title>Login to SundayHoliday</title>
+</head>
+
+<body>
+    <header>
+        <% include ../partials/header %>
+    </header>
+        <div class="text-center custom--margine col-md-6 offset-md-3 col-xl-2 offset-xl-5">
+            <form action="/login" method="POST" name="form" class="form-signin" >
+                <i class="fas fa-sign-in-alt fa-10x"></i>
+                <h1 class="h3 mb-3 font-weight-normal"></i>Login</h1>
+
+                <label for="inputUsername" class="sr-only">Username</label>
+                <input id="inputUsername" class="form-control" placeholder="Username" name="username"
+                    required autofocus="" type="Username">
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input id="inputPassword" class="form-control" placeholder="Password" name="password"
+                   required type="password">
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="ricordami" checked> Ricordami
+                    </label>
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit"><i class="fas fa-sign-in-alt"></i>
+                  Accedi</button><br />
+                <a href="/signup"><i class="fas fa-user-plus"></i> Registrati</a>
+
+            </form>
+
+            <a href="/auth/google" class="btn btn-block btn-social btn-google">
+	      <button type="button" class="btn btn-basic btn-md">
+		<span class="fab fa-google"></span> Sign in with Google
+	      </button>
+	    </a>
+
+        </div>
+
+        <footer>
+            <% include ../partials/footer %>
+        </footer>
+</body>
+
+</html>

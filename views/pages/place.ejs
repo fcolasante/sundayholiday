@@ -1,0 +1,76 @@
+<!-- views/pages/place.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body >
+
+<header>
+    <% include ../partials/header %>
+</header>
+<main class="container">
+    <div class="jumbotron">
+        <!--<form action="/save_local_event" method="POST">-->
+            <h1 id="place_name"><%=g_data.name%></h1>
+            <p> (<%=g_data.geometry.location.lat%>, <%=g_data.geometry.location.lng%>) </p>
+
+            <% if (typeof fb_data[0] == 'object' && fb_data[0] ) { %>
+
+                <p id="place_address"><%=g_data.formatted_address%> - <a href="<%=fb_data[0].link%>" class="btn" target="_blank">Scopri gli eventi su Facebook!</a> </p>
+
+                <% if (typeof fb_data[0].cover == 'object' && fb_data[0].cover) { %>
+
+                    <img src="<%=fb_data[0].cover.source%>">
+                    <p><%=fb_data[0].description%></p>
+
+                <% } %>
+            <%} else {%>
+
+                <p><%=g_data.formatted_address%> - Non ho trovato corrispondenze su Facebook :(</p>
+            
+            <% } %>
+    
+            <div style='margin:15px; padding:10px;'>
+                <!--    - GET su /save_local_event con parametri passati g_data.name (da aggiungere data e meteo) 
+                        - Cliccando sul link si andrà in routes.js -> app.get('/save_local_event', function (req, res) {
+                                                                        saveLocalEvent.send_page(req, res)
+                                                                    })
+                        - Questa chiamerà a sua volta send_page di saveLocalEvent che renderizzerà la pagina /save_local_event passando come oggetto i parametri della GET
+                -->
+                <% if (typeof fb_data[0] == 'object' && fb_data[0] ) { %>
+                    <p> <a href="/save_local_event?title=<%=g_data.name%>&fblink=<%=fb_data[0].link%>&lat=<%=g_data.geometry.location.lat%>&lng=<%=g_data.geometry.location.lng%>" class="btn btn-success">Salva l'evento!</a> </p>
+                <%} else {%>
+                    <p> <a href="/save_local_event?title=<%=g_data.name%>&fblink=Non trovato :(&lat=<%=g_data.geometry.location.lat%>&lng=<%=g_data.geometry.location.lng%>>" class="btn btn-success">Salva l'evento!</a> </p>
+                <% } %>
+            </div>
+        <!--</form>-->
+    </div>
+    <!--blocco IF: se ci sono review prosegui, altrimenti skippa o si finisce a NullPointerException nel forEach-->
+    <% if (typeof g_data.reviews == 'object' && g_data.reviews) { %>
+    
+    <div class="row">
+        Reviews:
+            <ul class="list-group list-group-flush">
+                    <% g_data.reviews.forEach(function(rev) { %>
+                        <li class="list-group-item ">
+                                <span>
+                                        <b><%= rev.author_name %></b>
+                                        <small><%= rev.text %></small>
+                                </span>
+                                <span class="badge badge-pill badge-primary">Rating <%= rev.rating %></span>
+                        </li>
+                    <% }); %>
+                </ul>
+    </div>
+    <!-- fine blocco IF -->
+    <% } %>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

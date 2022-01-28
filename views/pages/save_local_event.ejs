@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body >
+
+<header>
+    <% include ../partials/header %>
+</header>
+
+<% var today = new Date() %>
+<% var yyyy = today.getYear() %>
+<% var mm = today.getMonth() %>
+<% var dd = today.getDay() %>
+
+<main class="container">
+    <div class="jumbotron">
+        <h1>Crea il tuo evento e condividilo con i tuoi amici!</h1>
+        <form action="/save&display" method="POST">
+            <!-- questa form deve portare a /save&display SOLO SE l'utente è loggato? Se si bisogna fare un if e portarsi appresso una variabile per determinare se è loggato o no, o magari controllare lato javascript in /save&display se lo è... -->
+            <h1 class="h3 mb-3 font-weight-normal"></i>Controlla che le informazioni siano corrette.</h1>
+            <div style='margin:15px; padding:10px;'>
+                <p> Titolo: </p>
+                <small> Inventa un nome unico e particolare!</small>
+                <label for="inputTitle" class="sr-only">Titolo: </label>
+                <input id="inputTitle" class="form-control" placeholder="Gita a <%=result.title%>..." name="title" required autofocus="" type="Titolo">
+                <!-- I seguenti campi sono readonly perchè non possono essere modificati qui e devono essere visibili con tag <input> per poter essere poi mandati nella POST, inoltre SOLO i campi che hanno un attributo name vengono inviati-->
+            	<p> Luogo: <input value="<%=result.title%>" class="form-control" name="location" readonly></p>
+                <p> Lat: <input name="lat" value="<%=result.lat%>" readonly> </p>
+                <p> Lng: <input name="lng" value="<%=result.lng%>" readonly> </p>
+            	<p> Data: <input type="date" class="form-control" name="date" min="<%=dd%>-<%=mm%>-<%=yyyy%>" value="<%=dd%>-<%=mm%>-<%=yyyy%>" required></p>
+            	<p> Meteo previsto: <input value="<%= weather.weather[0].description %>" class="form-control" name="weather" readonly></p>
+                <p> Breve descrizione: </p>
+			    <label for="inputDesc" class="sr-only">Breve descrizione: </label>
+                <input id="inputDesc" class="form-control" placeholder="Non vedo l'ora di ammirare <%=result.title%>..." name="description" required autofocus="" type="Desc">
+                <p> Pagina Facebook: <input value="<%=result.fblink%>" class="form-control" name="fblink" required></p>
+                <small> Il link non è giusto? <a href="<%=result.fblink%>" class="btn" target="_blank">Cerca su Facebook e trova la pagina corretta!</a> </small>
+
+	        	<button class="btn btn-success"> Salva l'evento</button>
+	    	</div>
+        </form>
+        <form action="/" method="GET">
+            <div style='margin:15px; padding:10px;'>
+	           <button class="btn btn-alert" >Nuova ricerca</button>
+            </div>
+	    </form>
+    </div>
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
+
